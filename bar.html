@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--响应时布局-->
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+		<title>面向对象进度条</title>
+		<!--引入包-->
+		<script src='js/konva/konva.js'></script>
+		<!--引入自己写的面向对象-->
+		<script src='bar.js'></script>
+	</head>
+	<body>
+	<!--创建舞台-->
+		<div id="container">
+			
+		</div>
+		
+		<script>
+		//创建舞台
+			var stage = new Konva.Stage({
+				container:'container',
+				width:window.innerWidth,
+				height:window.innerHeight
+			});
+			//创建层
+			var layer = new Konva.Layer();
+			//添加层到舞台上
+			stage.add(layer);
+			
+			//创建对象  初始化
+			var option = {
+				x:stage.width() / 8,
+				y:stage.height() / 2,
+				width:stage.width() * (3/4),
+				height:stage.height() / 12,
+				
+				strokeStyle:'blue',
+				fillStyle:'orange'
+			}
+			
+			var b = new Bar(option);
+			//添加到层
+              b.addLayer(layer);
+                
+			//渲染层
+			layer.draw();
+			//进度条值
+			b.value(56);
+		</script>
+	</body>
+</html>

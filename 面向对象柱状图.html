@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no" />
+		<title>面向对象柱状图</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background-color: #f5f5f5;
+			}
+		</style>
+		<script src='js/konva/konva.js'></script>
+		<script src='面向对象柱状图.js'></script>
+	</head>
+	<body>
+		<div id="container">
+			
+		</div>
+		   <script>
+		   	  var stage = new Konva.Stage({
+				container:'container',
+				width:window.innerWidth,
+				height:window.innerHeight
+			});
+			  //创建层
+			var layer = new Konva.Layer();
+			stage.add(layer);
+//             初始化值
+			  //柱状图数据
+			  var data = [
+			  {name:'PHP',value:'.7',color:'pink'},
+			  {name:'AJAX',value:'.4',color:'blue'},
+			  {name:'JAVA',value:'.3',color:'orange'},
+			  {name:'JS',value:'.7',color:'yellow'},
+			  {name:'Jquery',value:'.8',color:'red'},
+			  {name:'CSS',value:'.2',color:'green'},
+			  ];
+			  
+			  var h = new Histogram({
+			  	x:stage.width() / 8,
+			  	y:stage.height() * (3 / 4),
+			  	w:stage.width() * (3 / 4),
+			  	h:stage.height() / 2,
+			  	data:data
+			  });
+			  h.addLayer(layer);
+			  layer.draw();
+			  //动画
+			  stage.on('contentClick',function(){
+			  	 h.animate();
+			  })
+		   </script>
+		
+	</body>
+</html>

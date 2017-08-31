@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>饼状图</title>
+		<script src='js/konva/konva.js'></script>
+		<script src='面向对象饼状图.js'></script>
+	</head> 
+	<body>
+		<div id="container"></div>
+		<script>
+			var stage = new Konva.Stage({
+				container:'container',
+				width:window.innerWidth,
+				height:window.innerHeight
+			});
+			var layer = new Konva.Layer();
+			stage.add(layer);
+			 
+			 var data = [ 
+	    	{ name: "前端", value: .25, color: '#e0e'  },
+	    	{ name: "php",  value: .2,  color: 'orange'},
+	    	{ name: "UI",	value: .3,	color: 'blue'  },
+			{ name: "C++",	value: .05,	color: 'green' },
+			{ name: "游戏",	value: .1,	color: 'purple'},
+			{ name: "Java",	value: .1,	color: 'red'   }
+		    ];
+		       var option = {
+		       	x:stage.width() / 2,
+		       	y:stage.height() / 2,
+		       	r:150,
+		       	data:data
+		       }
+		       var p = new PieChart(option);
+			 p.addLayer(layer);
+			 layer.draw();
+			 p.animate();
+		</script>
+	</body>
+</html>
